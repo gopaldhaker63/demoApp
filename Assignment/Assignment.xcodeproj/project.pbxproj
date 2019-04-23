@@ -21,6 +21,7 @@
 		5775FA11226ED106004F9775 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5775FA10226ED106004F9775 /* RecordCell.swift */; };
 		5775FA14226EFF37004F9775 /* ShowImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5775FA13226EFF37004F9775 /* ShowImageVC.swift */; };
 		5775FA17226F0BA8004F9775 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5775FA16226F0BA8004F9775 /* Reachability.swift */; };
+		5775FA19226F19A3004F9775 /* MyLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5775FA18226F19A3004F9775 /* MyLibrary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		5775FA10226ED106004F9775 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		5775FA13226EFF37004F9775 /* ShowImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImageVC.swift; sourceTree = "<group>"; };
 		5775FA16226F0BA8004F9775 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		5775FA18226F19A3004F9775 /* MyLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLibrary.swift; sourceTree = "<group>"; };
 		848F3403F1E4E3DAD541A381 /* Pods-Assignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Assignment/Pods-Assignment.debug.xcconfig"; sourceTree = "<group>"; };
 		C63A808C409A1F57613D701D /* Pods_Assignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Assignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C3E226787F0555B88E1B21 /* Pods-Assignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment.release.xcconfig"; path = "Pods/Target Support Files/Pods-Assignment/Pods-Assignment.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		5775FA15226F0B8A004F9775 /* ClassFile */ = {
 			isa = PBXGroup;
 			children = (
+				5775FA18226F19A3004F9775 /* MyLibrary.swift */,
 				5775FA16226F0BA8004F9775 /* Reachability.swift */,
 			);
 			path = ClassFile;
@@ -274,6 +277,7 @@
 				5775FA09226EC6BE004F9775 /* BaseData.swift in Sources */,
 				5775FA17226F0BA8004F9775 /* Reachability.swift in Sources */,
 				5775FA08226EC6BE004F9775 /* DataRecods.swift in Sources */,
+				5775FA19226F19A3004F9775 /* MyLibrary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

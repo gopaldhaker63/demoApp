@@ -2,7 +2,7 @@
 //  APIParser.swift
 //  Assignment
 //
-//  Created by tosc188 on 23/04/19.
+//  Created by GOPAL on 23/04/19.
 //  Copyright © 2019 tosc188. All rights reserved.
 //
 

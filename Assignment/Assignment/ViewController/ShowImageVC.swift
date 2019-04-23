@@ -2,7 +2,7 @@
 //  ShowImageVC.swift
 //  Assignment
 //
-//  Created by tosc188 on 23/04/19.
+//  Created by GOPAL on 23/04/19.
 //  Copyright © 2019 tosc188. All rights reserved.
 //
 
@@ -16,12 +16,16 @@ class ShowImageVC: UIViewController,UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         scrolView.delegate = self
         scrolView.minimumZoomScale = 1.0
         scrolView.maximumZoomScale = 10.0
+        
         self.title = "SHOW IMAGE"
+        
         setImage()
     }
+    // MARK:- Private Method
     func setImage(){
         if let strURL = category_thumb_image{
             if let url = URL(string: strURL){
@@ -40,15 +44,4 @@ class ShowImageVC: UIViewController,UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imgPhoto
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

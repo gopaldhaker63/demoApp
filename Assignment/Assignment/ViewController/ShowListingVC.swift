@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Assignment
 //
-//  Created by tosc188 on 23/04/19.
+//  Created by GOPAL on 23/04/19.
 //  Copyright © 2019 tosc188. All rights reserved.
 //
 
@@ -11,13 +11,14 @@ import UIKit
 class ShowListingVC: UIViewController {
 
     @IBOutlet weak var tblRecords: UITableView!
+    var activityIndicator:UIView?
 
     var arrRecords = [DataRecods]()
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(ShowListingVC.handleRefresh(_:)), for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.red
+        refreshControl.tintColor = UIColor.lightGray
         
         return refreshControl
     }()
@@ -28,18 +29,32 @@ class ShowListingVC: UIViewController {
         self.tblRecords.addSubview(self.refreshControl)
         callAPI()
     }
+    
+    // MARK:- Private Method
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         self.tblRecords.reloadData()
         refreshControl.endRefreshing()
     }
-
-    // MARK-: Private Method
+    
+    func addActivityIndicator() {
+        removeActivityIndicator()
+        activityIndicator = MyLibrary.shared.activityIndicatorView(frame: self.view.bounds)
+        self.view.addSubview(activityIndicator!)
+    }
+    
+    func removeActivityIndicator(){
+        if activityIndicator != nil{
+            activityIndicator!.removeFromSuperview()
+            activityIndicator = nil
+        }
+    }
  
     func callAPI(){
         let apiCallParser = APICallParser()
         
         if Reachability.isConnectedToNetwork(){
             print("Internet Connection Available!")
+            addActivityIndicator()
             apiCallParser.callAPI(ur: "http://api.vishalinfosoft.com/api/category") { (object) in
                 if let baseData = object.data as? BaseData{
                     if let arrRecordD = baseData.dataRecods{
@@ -49,6 +64,7 @@ class ShowListingVC: UIViewController {
                             let defaults = UserDefaults.standard
                             defaults.set(encoded, forKey: "data")
                         }
+                        self.removeActivityIndicator()
                         self.tblRecords.reloadData()
                         for data in arrRecordD{
                             print(data.category_name ?? "")
@@ -73,6 +89,7 @@ class ShowListingVC: UIViewController {
         }
     }
 }
+// MARK:- UITableView Delegate & DataSource Method
 
 extension ShowListingVC:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
