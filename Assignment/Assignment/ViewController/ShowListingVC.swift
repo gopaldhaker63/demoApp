@@ -22,7 +22,6 @@ class ShowListingVC: UIViewController {
         return refreshControl
     }()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "LISTING"
@@ -45,9 +44,6 @@ class ShowListingVC: UIViewController {
                 if let baseData = object.data as? BaseData{
                     if let arrRecordD = baseData.dataRecods{
                         self.arrRecords = arrRecordD
-//                        let placesData = NSKeyedArchiver.archivedData(withRootObject: self.arrRecords)
-//                        UserDefaults.standard.set(placesData, forKey: "data")
-                        
                         let encoder = JSONEncoder()
                         if let encoded = try? encoder.encode(baseData) {
                             let defaults = UserDefaults.standard
@@ -62,8 +58,6 @@ class ShowListingVC: UIViewController {
             }
         }else{
             print("Internet Connection not Available!")
-//            let placesData = UserDefaults.standard.object(forKey: "data") as? NSData
-            
             if let data = UserDefaults.standard.object(forKey: "data") as? Data {
                 let decoder = JSONDecoder()
                 if let loadedData = try? decoder.decode(BaseData.self, from: data) {
@@ -77,34 +71,7 @@ class ShowListingVC: UIViewController {
                 }
             }
         }
-        
-
     }
-    
-//    func dateTime(){
-//        let date = Date()
-//
-//        if let utcCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian) {
-//            if let utcTimeZone = NSTimeZone(abbreviation: "UTC") {
-//
-//                utcCalendar.timeZone = utcTimeZone as TimeZone
-//
-//                let ymdhmsUnitFlags: NSCalendar.Unit = .year | .month
-//
-//                let utcDateComponents = utcCalendar.components(ymdhmsUnitFlags, fromDate: date)
-//
-//                // Create string of form "yyyy-mm-dd hh:mm:ss"
-//                let utcDateTimeString = NSString(format: "%04u-%02u-%02u %02u:%02u:%02u",
-//                                                 UInt(utcDateComponents.year),
-//                                                 UInt(utcDateComponents.month),
-//                                                 UInt(utcDateComponents.day),
-//                                                 UInt(utcDateComponents.hour),
-//                                                 UInt(utcDateComponents.minute),
-//                                                 UInt(utcDateComponents.second))
-//            }
-//        }
-//    }
-    
 }
 
 extension ShowListingVC:UITableViewDataSource,UITableViewDelegate{
@@ -118,12 +85,10 @@ extension ShowListingVC:UITableViewDataSource,UITableViewDelegate{
         recordCell.selectionStyle = .none
         return recordCell
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ShowImageVC") as! ShowImageVC
         vc.category_thumb_image = arrRecords[indexPath.row].category_thumb_image
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
