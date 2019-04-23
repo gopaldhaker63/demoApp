@@ -86,6 +86,13 @@ class ShowListingVC: UIViewController {
                     self.tblRecords.reloadData()
                 }
             }
+            let message = MyLibrary.Messages.Internet_connection_error.rawValue
+            let alert = UIAlertController(title: MyLibrary.shared.appName, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                alertAction in
+            }))
+            self.present(alert, animated: true, completion: nil)
+
         }
     }
 }
